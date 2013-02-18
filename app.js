@@ -24,6 +24,7 @@ app.get('/prettify.min.js', function(req, res) {
 app.get('/main.js', function(req, res) {
   res.sendfile(__dirname + '/public/main.js');
 });
+
 //webRTC socet events
 webRTC.rtc.on('connect', function(rtc) {
   //Client connected

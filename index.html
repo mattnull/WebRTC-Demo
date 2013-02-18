@@ -19,29 +19,8 @@
             <section>
                 <div class="row">
                     <div class="span11">
-                        <h1>WebRTC</h1>
-<pre class="prettyprint linenums pre-scrollable">
-//connect to our server
-var socket = io.connect('http://thefutureisnow.nullempire.com:80');
-//when we recieve a message, show it in the DOM
-socket.on('receiveDemoMessage', function(message){
-    //append to messages list
-});
-//when the document is ready, attach DOM events
-$(function(){
-
-    $('#message').on('keyup', function(e){
-        //when the enter key is pressed, send a message
-        if(e.keyCode === 13){
-            var el = $(this);
-            var message = el.val();
-            socket.emit('sendDemoMessage', message);
-            el.val('');
-        }
-    });
-});
-</pre>  
-              <div id="videos" style="position:absolute;">
+                        <h1>WebRTC</h1> 
+              <div id="videos">
                 <video id="you" autoplay=""></video>
               </div>
                 </div>
@@ -87,9 +66,7 @@ $(function(){
         var height = Math.floor((window.innerHeight - 190) / perColumn);
         video.width = width;
         video.height = height;
-        video.style.position = "absolute";
-        video.style.left = (i % perRow) * width + "px";
-        video.style.top = Math.floor(i / perRow) * height + "px";
+        video.style.float = "left";
       }
 
       function cloneVideo(domId, socketId) {
