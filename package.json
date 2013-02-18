@@ -1,0 +1,17 @@
+{
+  "name": "thefutureisnow-webrtc",
+  "version": "0.0.0",
+  "description": "Demo for The Future is Now - SXSW 2013 Workshop",
+  "main": "app.js",
+  "dependencies": {
+    "ws": ">= 0.0.0",
+    "webrtc.io": ">= 0.0.0",
+    "express": "~3.1.0"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": {
+    "name": "Matt Null"
+  }
+}
