@@ -1,4 +1,5 @@
-thefutureisnow-webRTC-demo
+The Future is Now SXSW 2013 - WebRTC Demo
 ==========================
-
-Demo app for webrtc
+## Instructions
+* Run `npm install`
+* Run `node app.js`
