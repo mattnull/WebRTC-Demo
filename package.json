@@ -1,6 +1,6 @@
 {
   "name": "thefutureisnow-webrtc",
-  "version": "0.0.0-9",
+  "version": "0.0.0-12",
   "description": "Demo for The Future is Now - SXSW 2013 Workshop",
   "dependencies": {
     "ws": ">= 0.0.0",
