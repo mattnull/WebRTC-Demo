@@ -7732,3 +7732,7 @@ ol.linenums li {
 #chat #set-notifications {
   display: none;
 }
+
+#videos{
+  overflow:hidden;
+}

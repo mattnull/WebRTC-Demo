@@ -11,25 +11,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="main.css">
         <script src="socket.io.min.js"></script>
-        <script src="prettify.min.js"></script>
         <script src="webrtc.io.js"></script>
     </head>
     <body onload="init()">
         <div id="main-content" class="container">
             <section>
                 <div class="row">
-                    <div class="span11">
-                        <h1>WebRTC</h1> 
-              <div id="videos" style="overflow:hidden;">
-                <video id="you" autoplay=""></video>
-              </div>
+                  <div class="span11">
+                      <h1>WebRTC</h1> 
+                      <div id="videos">
+                        <video id="you" autoplay=""></video>
+                      </div>
+                  </div>
                 </div>
              </section>
         </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script src="main.js"></script>
+<script src="jquery.min.js"></script>
 <script>
-
   /** Demo based off of WebRTC.io demo https://github.com/webRTC/webrtc.io-demo **/
   var videos = [];
   var PeerConnection = window.PeerConnection || window.webkitPeerConnection00 || window.webkitRTCPeerConnection;

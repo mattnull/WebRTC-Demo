@@ -17,6 +17,9 @@ app.get('/webrtc.io.js', function(req, res) {
 app.get('/socket.io.min.js', function(req, res) {
   res.sendfile(__dirname + '/public/vendor/socket.io/socket.io.min.js');
 });
+app.get('/jquery.min.js', function(req, res) {
+  res.sendfile(__dirname + '/public/vendor/jquery.min.js');
+});
 app.get('/prettify.min.js', function(req, res) {
   res.sendfile(__dirname + '/public/vendor/prettify.min.js');
 });
