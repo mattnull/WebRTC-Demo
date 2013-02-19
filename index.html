@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,6 +7,7 @@
         <meta name="description" content="The Future is Now">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="main.css">
+        <script src="jquery.min.js"></script>
         <script src="socket.io.min.js"></script>
         <script src="webrtc.io.js"></script>
     </head>
@@ -26,7 +24,6 @@
                 </div>
              </section>
         </div>
-<script src="jquery.min.js"></script>
 <script>
   /** Demo based off of WebRTC.io demo https://github.com/webRTC/webrtc.io-demo **/
   var videos = [];
@@ -88,6 +85,6 @@
         removeVideo(data);
     });
   }
-    </script>
+</script>
 </body>
 </html>

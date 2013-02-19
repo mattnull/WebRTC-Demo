@@ -20,10 +20,4 @@ app.get('/socket.io.min.js', function(req, res) {
 app.get('/jquery.min.js', function(req, res) {
   res.sendfile(__dirname + '/public/vendor/jquery.min.js');
 });
-app.get('/prettify.min.js', function(req, res) {
-  res.sendfile(__dirname + '/public/vendor/prettify.min.js');
-});
-app.get('/main.js', function(req, res) {
-  res.sendfile(__dirname + '/public/main.js');
-});
 
