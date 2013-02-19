@@ -1,4 +1,5 @@
-The Future is Now SXSW 2013 - WebRTC Demo
+WebRTC Demo
+This is a simple WebRTC video chat example using webRTC.io
 ==========================
 ## Instructions
 * Run `npm install`
