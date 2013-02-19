@@ -1,6 +1,9 @@
 # WebRTC Demo
-This is a simple WebRTC video chat example using webRTC.io
 ==========================
+
+This is a simple WebRTC video chat example using webRTC.io
+
+
 ## Instructions
 * Run `npm install`
 * Run `node app.js`
