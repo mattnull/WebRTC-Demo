@@ -1,4 +1,4 @@
-WebRTC Demo
+# WebRTC Demo
 This is a simple WebRTC video chat example using webRTC.io
 ==========================
 ## Instructions
