@@ -8,10 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="main.css">
         <script src="jquery.min.js"></script>
-        <script src="socket.io.min.js"></script>
         <script src="webrtc.io.js"></script>
     </head>
-    <body onload="init()">
+    <body onload="init();">
         <div id="main-content" class="container">
             <section>
                 <div class="row">
@@ -25,9 +24,7 @@
              </section>
         </div>
 <script>
-  /** Demo based off of WebRTC.io demo https://github.com/webRTC/webrtc.io-demo **/
   var videos = [];
-  var PeerConnection = window.PeerConnection || window.webkitPeerConnection00 || window.webkitRTCPeerConnection;
 
   function adjustVideo(video) {
     video.style.float = "left";
@@ -51,11 +48,10 @@
         video.parentNode.removeChild(video);
     }
   }
-
   function init() {
 
     if(PeerConnection){
-      rtc.createStream({"video": true, "audio": true}, function(stream) {
+      rtc.createFullStream(function(stream) {
         var video = document.getElementById('you');
         video.src = URL.createObjectURL(stream);
         videos.push(video);

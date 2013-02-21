@@ -5,7 +5,8 @@
   "dependencies": {
     "ws": ">= 0.0.0",
     "webrtc.io": ">= 0.0.0",
-    "express": "~3.1.0"
+    "express": "~3.1.0",
+    "holla": "~0.6.1"
   },
   "private": true,
   "scripts": {
