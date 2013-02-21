@@ -1,8 +1,7 @@
 # WebRTC Demo
 ==========================
 
-This is a simple WebRTC video chat example using webRTC.io
-
+WebRTC Demo using WebRTC.io. WebRTC is an HTML5 feature that real-time communication without a plugin. This demo is a simple group video chat that will allow any number of clients to connect. This demo currently only works in Chrome.
 
 ## Instructions
 * Run `npm install`
