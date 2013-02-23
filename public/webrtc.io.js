@@ -263,7 +263,7 @@ var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || nav
     function() {};
     onFail = onFail ||
     function() {};
-
+    console.log(opt)
     options = {
       video: !!opt.video,
       audio: !!opt.audio

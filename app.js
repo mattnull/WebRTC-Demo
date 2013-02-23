@@ -8,6 +8,9 @@ server.listen(8000);
 app.get('/', function(req, res) {
   res.sendfile(__dirname + '/index.html');
 });
+app.get('/demoncube', function(req, res) {
+  res.sendfile(__dirname + '/demoncube.html');
+});
 app.get('/main.css', function(req, res) {
   res.sendfile(__dirname + '/public/main.css');
 });

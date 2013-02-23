@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Future is Now - SXSW 2013</title>
+        <meta name="description" content="The Future is Now">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.min.js"></script>
+        <script src="webrtc.io.js"></script>
+        <style>
+        video{
+          height:400px;
+          width:400px;
+        }
+        .container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin:150px auto;
+  -webkit-perspective: 1000px;
+  -webkit-perspective-origin: 0 0;
+}
+
+#cube {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-perspective-origin: 0 0;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 0.5s ease-in-out
+}
+
+#cube figure {
+  width: 396px;
+  height: 396px;
+  display: block;
+  position: absolute;
+  border: 1px solid black;
+  background: rgba(45,161,236,0.5)
+}
+#cube.show-front  { -webkit-transform: translateZ( -400px ) rotateY(    0deg ); }
+#cube.show-back   { -webkit-transform: translateZ( -400px ) rotateX( -180deg ); }
+#cube.show-right  { -webkit-transform: translateZ( -400px ) rotateY(  -90deg ); }
+#cube.show-left   { -webkit-transform: translateZ( -400px ) rotateY(   90deg ); }
+#cube.show-top    { -webkit-transform: translateZ( -400px ) rotateX(  -90deg ); }
+#cube.show-bottom { -webkit-transform: translateZ( -400px ) rotateX(   90deg ); }
+#cube .front  { -webkit-transform: rotateY(   0deg ); }
+#cube .back   { -webkit-transform: rotateX( 180deg ); }
+#cube .right  { -webkit-transform: rotateY(  90deg ); }
+#cube .left   { -webkit-transform: rotateY( -90deg ); }
+#cube .top    { -webkit-transform: rotateX(  90deg ); }
+#cube .bottom { -webkit-transform: rotateX( -90deg ); }
+
+#cube .front  { -webkit-transform: rotateY(   0deg ) translateZ( 200px ); }
+#cube .back   { -webkit-transform: rotateX( 180deg ) translateZ( 200px ); }
+#cube .right  { -webkit-transform: rotateY(  90deg ) translateZ( 200px ); }
+#cube .left   { -webkit-transform: rotateY( -90deg ) translateZ( 200px ); }
+#cube .top    { -webkit-transform: rotateX(  90deg ) translateZ( 200px ); }
+#cube .bottom { -webkit-transform: rotateX( -90deg ) translateZ( 200px ); }
+        </style>
+    </head>
+    <body onload="init();">
+        <section class="container">
+          <div id="cube">
+            <figure class="front"><video id="you" autoplay=""></video></figure>
+            <figure class="back"></figure>
+            <figure class="right"></figure>
+            <figure class="left"></figure>
+            <figure class="top"></figure>
+            <figure class="bottom"></figure>
+          </div>
+        </section>
+<script>
+  var videos = [];
+  var addFilter = function(video){
+        var filters = [
+            'blur(5px)',
+            'grayscale(1)',
+            'sepia(1)',
+            'saturate(10)',
+            'brightness(10)',
+            'contrast(10)',
+            'hue-rotate(180deg)',
+            'invert(1)',
+            ''
+        ];
+
+        //randomly select a filter
+        filter = filters[Math.floor(Math.random() * filters.length)]
+        console.log(filter)
+        //add the filter to our video element
+        video.css('-webkit-filter', filter);
+    };
+  function adjustVideo(video) {
+   
+  }
+
+  function cloneVideo(domId, socketId) {
+    var video = document.getElementById(domId);
+    var clone = video.cloneNode(false);
+    clone.id = "remote" + socketId;
+    // document.getElementById('videos').appendChild(clone);
+
+    var space = $('figure').filter(function() { return !($(this).children().length); });
+
+    if(space.length){
+      space.eq(0).append(clone);
+      videos.push(clone);
+    }
+    else{
+      console.log('no space left in the demon cube!');
+    }
+    
+    // adjustVideo(clone);
+    return clone;
+  }
+
+  function removeVideo(socketId) {
+    var video = document.getElementById('remote' + socketId);
+    if (video) {
+        videos.splice(videos.indexOf(video), 1);
+        video.parentNode.removeChild(video);
+    }
+  }
+  function init() {
+
+    if(PeerConnection){
+      rtc.createFullStream(function(stream) {
+        var video = document.getElementById('you');
+        video.src = URL.createObjectURL(stream);
+        videos.push(video);
+        addFilter($('#you'))
+      });
+    }
+    else{
+      alert('Your browser is not supported or you have to turn on flags. In chrome you go to chrome://flags and turn on Enable PeerConnection remember to restart chrome');
+    }
+
+    var room = window.location.hash.slice(1);
+    var url = "ws:"+window.location.href.substring(window.location.protocol.length);
+    var hash = url.indexOf('#');
+    url = (hash !== -1) ? url.substring(0, hash) : url;
+    
+    rtc.connect(url, room);
+
+    rtc.on('add remote stream', function(stream, socketId) {
+      console.log("ADDING REMOTE STREAM...");
+      var clone = cloneVideo('you', socketId);
+      document.getElementById(clone.id).setAttribute("class", "");
+      rtc.attachStream(stream, clone.id);
+      addFilter($('#'+clone.id))
+    });
+
+    rtc.on('disconnect stream', function(data) {
+        console.log('remove ' + data);
+        removeVideo(data);
+    });
+
+      var cubeClasses = [
+        'show-front',
+        'show-back',
+        'show-right',
+        'show-left',
+        'show-top',
+        'show-bottom'
+      ];
+
+      setInterval(function(){
+        cube = $('#cube')
+        angleX = Math.floor(Math.random() * 360)
+        angleY = Math.floor(Math.random() * 360)
+        angleZ = Math.floor(Math.random() * 360)
+        cube.css({
+          '-webkit-transform':'rotateY('+angleX+'deg) rotateX('+angleY+'deg) rotateZ('+angleZ+'deg)'
+        });
+
+      },2000)
+  }
+</script>
+</body>
+</html>
