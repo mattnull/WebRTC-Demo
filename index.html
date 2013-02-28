@@ -15,8 +15,8 @@
             <section>
                 <div class="row">
                   <div class="span11">
-                      <h1>WebRTC</h1> 
                       <div id="videos">
+                        <h1 id="loader">Waiting for people to join...</h1>
                         <video id="you" autoplay=""></video>
                       </div>
                   </div>
@@ -55,7 +55,8 @@
         var video = document.getElementById('you');
         video.src = URL.createObjectURL(stream);
         videos.push(video);
-        adjustVideo(video)
+        adjustVideo(video);
+        $('#loader').hide();
       });
     }
     else{

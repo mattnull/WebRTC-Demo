@@ -2,7 +2,9 @@ var app = require('express')();
 var server = require('http').createServer(app);
 var holla = require('webrtc.io').listen(server);
 
-server.listen(8000);
+server.listen(8000, function(){
+	console.log('Server running on port 8000')
+});
 
 // Routes
 app.get('/', function(req, res) {
